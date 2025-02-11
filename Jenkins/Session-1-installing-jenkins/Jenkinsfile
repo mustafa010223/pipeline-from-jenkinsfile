@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+    triggers {
+        githubPush() // GitHub'dan gelen push tetikleyici
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', 
+                    credentialsId: 'github-credentials',
+                    url: 'https://github.com/mustafa010223/pipeline-from-jenkinsfile.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building the project...'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application...'
+            }
+        }
+    }
+}
