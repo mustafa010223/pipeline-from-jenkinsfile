@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo "✅ Kod Checkout Edildi"
+                sh 'echo "Kod derleme işlemi tamamlandı"'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo "🛠️ Test Aşaması Başladı..."
+                sh './webhook_test.sh'
+            }
+        }
+    }
+}
